@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idle Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+
+        <div id="title-container">
+            <h1>Idle Game</h1>
+        </div>
+        <div id="game-wrapper">
+            <div id="game-container">
+
+                <div id="game-object-container">
+                </div>
+    
+                <div id="ui-container">
+                    <div id="stats">
+                        <div id="currency-container">
+                            <div id="currency">0 catnip</div>
+                            <div id="currency-rate">100/s</div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div id="overlay-container">
+                    
+                </div>
+    
+            </div>
+        </div>
+        <div id="settings-container">
+            <h2>Settings</h2>
+            <label for="volume">Volume</label>
+            <input type="range" name="" id="volume" min="0" max="1" step=".05">
+            <button id="mute">Mute</button>
+            <script>
+
+                const volumeInput = document.querySelector('#settings-container #volume');
+                volumeInput.addEventListener('input', (e) => {
+                    const volume = e.target.value;
+
+                    Sound.setVolume(volume);
+                })
+
+                let muted = false;
+                const muteButton = document.querySelector('#settings-container #mute');
+                muteButton.addEventListener('click', () => {
+                    if (muted) {
+                        Sound.setVolume(volumeInput.value);
+                        muteButton.textContent = 'Mute';
+                    } else {
+                        Sound.setVolume(0);
+                        muteButton.textContent = 'Unmute';
+                    }
+                    muted = !muted;
+                })
+
+            </script>
+        </div>
+
+    </main>
+        
+    <script src="./recipes.js"></script>
+    <script src="./src/dataClass.js"></script>
+    <script src="./src/global.js"></script>
+    <script src="./src/engine/event.js"></script>
+    <script src="./src/engine/timer.js"></script>
+    <script src="./src/engine/vector.js"></script>
+    <script src="./src/engine/gameEngine.js"></script>
+    <script src="./src/engine/sound.js"></script>
+    <script src="./src/engine/gameObject.js"></script>
+    <script src="./src/gameSeason.js"></script>
+    <script src="./src/ui/recipeBookPages.js"></script>
+    <script src="./src/ui/recipeBook.js"></script>
+    <script src="./src/ui/ui.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
